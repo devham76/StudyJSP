@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
-<jsp:include page="head.jsp" flush="true" />
+<jsp:include page="/head.jsp" flush="true" />
 <style>
 .btn {
 	margin-right: 10px;
@@ -39,4 +39,4 @@
 	</div>
 </div>
 
-<jsp:include page="footer.html" flush="true" />
+<jsp:include page="/footer.html" flush="true" />
