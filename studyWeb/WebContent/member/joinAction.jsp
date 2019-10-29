@@ -12,22 +12,33 @@
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userId" />
 <jsp:setProperty name="user" property="userPw" />
+<jsp:setProperty name="user" property="userName" />
 
-<!-- 회원 가입 처리 페이지 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP</title>
+</head>
+<body>
+<!-- 로그인 처리 페이지 -->
 <%
 
 	UserDAO userDAO = new UserDAO();
-	int result = userDAO.join(user.getUserId(), user.getUserPw(), user.getUserName());
-	
-	System.out.println("join result =>"+result+", id :"+user.getUserId()+", pw :"+user.getUserPw());
+	int result = userDAO.login(user.getUserId(), user.getUserPw());
+
+	System.out.println("result =>"+result+", id :"+user.getUserId()+", pw :"+user.getUserPw());
 	PrintWriter script = response.getWriter();
 	script.print("<script type='text/javascript'>");
 	if (result == 1) {
-		script.print("alert('회원가입에 성공하셨습니다!');");
-		script.print(" location.href = 'login.jsp' ");
+		script.print(" location.href = 'main.jsp' ");
+	}
+	else if (result == 0) {
+		script.print("alert('비밀번호가 틀립니다');");
+		script.print("history.back();");
 	}
 	else if (result == -1) {
-		script.print("alert('회원가입에 실패했습니다');");
+		script.print("alert('존재하지 않는 아이디 입니다');");
 		script.print("history.back();");
 	}
 	else if (result == -2) {
@@ -36,3 +47,6 @@
 	}
 	script.print("</script>");
 %>
+
+</body>
+</html>

@@ -15,7 +15,7 @@ public class UserDAO {
 			// 우리 컴에 설치된 mysql서버를 의미, bbs라는 데이터 베이스에 접속
 			String dbID = "root";
 			String dbPassword = "devham7676";
-			//Class.forName("com.mysql.jdbc.Drvier");
+			//Class.forName("com.mysql.jdbc.Drvier");	// 주석처리하니까 실행됬음. 원인이 뭘까?
 			// 드라이버 : mysql에 접속할 수 있도록 하는 하나의 메게체
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			System.out.println("1conn:"+conn);
@@ -27,7 +27,7 @@ public class UserDAO {
 	public int login(String userID, String userPassword) {
 		System.out.println("id : "+ userID+", pw: "+userPassword);
 		String SQL = "Select userPw from user where userId = ? ";
-		System.out.println("2conn:"+conn);
+		System.out.println("login conn:"+conn);
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
@@ -45,7 +45,28 @@ public class UserDAO {
 			e.printStackTrace();
 			System.out.println("error2");
 		}
-		
+		return -2; // db오류
+	}
+	
+	public int join(String userId, String userPw, String userName) {
+		System.out.println("id : "+ userId+", pw: "+userPw+", name :"+userName);
+		String SQL = "Insert into user (userId, userPw, name) values (? ,? ,?)";
+		System.out.println("join conn:"+conn);
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPw);
+			pstmt.setString(3, userName);
+			boolean result = pstmt.execute();
+			if (result == true)
+				return 1;	// 회원가입 성공
+			else 
+				return -1;	// 회원가입 실패
+		} catch(Exception e) {
+			System.out.println("error1");
+			e.printStackTrace();
+			System.out.println("error2");
+		}
 		return -2; // db오류
 	}
 }
