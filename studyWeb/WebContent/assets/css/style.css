@@ -1,0 +1,11 @@
+
+.row {
+	margin: 10px 0px;
+}
+#search-text {
+	width: 200px;
+	margin: 0 3px 0 10px;
+}
+.btn {
+	margin-right: 10px;
+}
