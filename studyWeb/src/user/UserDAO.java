@@ -48,25 +48,22 @@ public class UserDAO {
 		return -2; // db오류
 	}
 	
-	public int join(String userId, String userPw, String userName) {
-		System.out.println("id : "+ userId+", pw: "+userPw+", name :"+userName);
-		String SQL = "Insert into user (userId, userPw, name) values (? ,? ,?)";
+	public int join(User user) {
+		//System.out.println("id : "+ userId+", pw: "+userPw+", name :"+userName);
+		String SQL = "Insert into user (userId, userPw, name) values (? ,? ,?) ";
 		System.out.println("join conn:"+conn);
+		System.out.println(SQL);
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userId);
-			pstmt.setString(2, userPw);
-			pstmt.setString(3, userName);
-			boolean result = pstmt.execute();
-			if (result == true)
-				return 1;	// 회원가입 성공
-			else 
-				return -1;	// 회원가입 실패
+			pstmt.setString(1, user.getUserId());
+			pstmt.setString(2, user.getUserPw());
+			pstmt.setString(3, user.getUserPw());
+			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			System.out.println("error1");
 			e.printStackTrace();
 			System.out.println("error2");
 		}
-		return -2; // db오류
+		return -1; // db오류
 	}
 }
