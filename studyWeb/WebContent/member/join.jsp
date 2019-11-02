@@ -60,4 +60,4 @@ input[name=userId] {
 		</footer>
 	</div>
 
-	<jsp:include page="/footer.html" flush="true" />
+	<jsp:include page="/footer.html" flush="true" />zz
