@@ -25,7 +25,7 @@
 	if (user.getUserId() == null) {
 		script.print("<script type='text/javascript'>");
 		script.print(" alert('아이디를 입력해주세요'); ");
-		script.print(" history.back(); ");		
+		script.print(" history.back(); ");
 		script.print("</script>");
 	} else if (user.getUserPw() == null) {
 		script.print("<script type='text/javascript'>");
