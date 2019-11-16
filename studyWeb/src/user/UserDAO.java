@@ -48,16 +48,16 @@ public class UserDAO {
 		return -2; // db¿À·ù
 	}
 	
-	public int join(User user) {
+	public int join(UserDTO userDto) {
 		//System.out.println("id : "+ userId+", pw: "+userPw+", name :"+userName);
 		String SQL = "Insert into user (userId, userPw, name) values (? ,? ,?) ";
 		System.out.println("join conn:"+conn);
 		System.out.println(SQL);
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserId());
-			pstmt.setString(2, user.getUserPw());
-			pstmt.setString(3, user.getUserPw());
+			pstmt.setString(1, userDto.getUserId());
+			pstmt.setString(2, userDto.getUserPw());
+			pstmt.setString(3, userDto.getUserPw());
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			System.out.println("error1");

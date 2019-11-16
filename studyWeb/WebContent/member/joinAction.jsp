@@ -11,7 +11,7 @@
 %>
 
 <%--자바 빈즈를 이용  , 현재페이지에서만 사용 --%>
-<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:useBean id="user" class="user.UserDTO" scope="page" />
 <jsp:setProperty name="user" property="userId" />
 <jsp:setProperty name="user" property="userPw" />
 <jsp:setProperty name="user" property="userName" />

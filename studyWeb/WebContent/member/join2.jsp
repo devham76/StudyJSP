@@ -14,7 +14,6 @@ input[name=userId] {
 	width: 80%
 }
 </style>
-
 <body class="bg-light">
 	<div class="container">
 		<div class="text-center pt-3">
@@ -24,14 +23,15 @@ input[name=userId] {
 		</div>
 		<div class="row">
 			<div class="col align-self-center">
-				<form class="needs-validation" method="post" action="joinAction.jsp"
-					novalidate>
+				<form class="needs-validation" method="post"
+					action="joinAction2.jsp" name="reg_frm">
 					<div class="mb-3">
 						<div class="input-group">
 							<input type="text" class="form-control" name="userId"
 								placeholder="아이디">
 							<div class="input-group-append">
-								<button type="checkId" class="btn btn-secondary">중복확인</button>
+								<button type="checkId" class="btn btn-secondary" name="check_id"
+									value=0>중복확인</button>
 							</div>
 						</div>
 					</div>
@@ -41,13 +41,18 @@ input[name=userId] {
 						<div class="invalid-feedback">비밀번호를 입력 해주세요</div>
 					</div>
 					<div class="mb-3">
+						<input type="password" class="form-control" name="userPw2"
+							placeholder="비밀번호 확인" required>
+						<div class="invalid-feedback">비밀번호를 다시 입력 해주세요</div>
+					</div>
+					<div class="mb-3">
 						<input type="text" class="form-control" name="userName"
 							placeholder="이름">
 					</div>
 
 					<hr class="mb-4">
-					<button class="btn btn-primary btn-lg btn-block" type="submit">회원
-						가입</button>
+					<button class="btn btn-primary btn-lg btn-block" type="button"
+						onclick="infoConfirm()">회원 가입</button>
 				</form>
 			</div>
 		</div>
@@ -60,4 +65,6 @@ input[name=userId] {
 		</footer>
 	</div>
 
+
+	<script lauguage="JavaScript" src="member.js"></script>
 	<jsp:include page="/footer.html" flush="true" />
