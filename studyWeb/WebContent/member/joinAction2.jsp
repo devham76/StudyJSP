@@ -5,7 +5,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="dto" class="user.UserDTO"></jsp:useBean>
 <jsp:setProperty name="dto" property="*" />
-<!-- dto는 data의 접근, dato는 data의 작업 -->
+<!-- dto는 data의 접근, dao는 data의 작업 -->
 <%
 	UserDAO userDao = new UserDAO();
 	int result = userDao.join(dto);
@@ -26,7 +26,7 @@ System.out
 %>
 	<script type="text/javascript">
 		alert("회원가입에 성공했습니다");
-		location.href = "main.jsp";
+		location.href = "./main.jsp";
 	</script>
 <% 
 	}

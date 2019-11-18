@@ -18,7 +18,6 @@ public class UserDAO {
 			//Class.forName("com.mysql.jdbc.Drvier");	// 주석처리하니까 실행됬음. 원인이 뭘까?
 			// 드라이버 : mysql에 접속할 수 있도록 하는 하나의 메게체
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			System.out.println("1conn:"+conn);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -41,9 +40,7 @@ public class UserDAO {
 			}
 			return -1; // 아이디가 없음
 		} catch(Exception e) {
-			System.out.println("error1");
 			e.printStackTrace();
-			System.out.println("error2");
 		}
 		return -2; // db오류
 	}
@@ -51,8 +48,6 @@ public class UserDAO {
 	public int join(UserDTO userDto) {
 		//System.out.println("id : "+ userId+", pw: "+userPw+", name :"+userName);
 		String SQL = "Insert into user (userId, userPw, name) values (? ,? ,?) ";
-		System.out.println("join conn:"+conn);
-		System.out.println(SQL);
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userDto.getUserId());
@@ -60,10 +55,52 @@ public class UserDAO {
 			pstmt.setString(3, userDto.getUserPw());
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
-			System.out.println("error1");
 			e.printStackTrace();
-			System.out.println("error2");
 		}
 		return -1; // db오류
+	}
+	
+	//-- 아이디 중복 검사
+	public int checkId(String id) {
+		String SQL = "Select userId from user where userId = ? ";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return -1; // 아이디 이미 존재
+			}
+			return 1; // 아이디 없음. 사용가능.
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -2; // db오류
+	}
+	
+	//-- 회원정보 가져오기
+	public UserDTO getUserInfo(String id) {
+		String SQL = "Select * form user where userId = ?";
+		UserDTO userDto = null;
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				userDto.setUserId( rs.getString("userId"));
+				userDto.setUserName( rs.getString("name"));
+				userDto.setUserPw( rs.getString("userPw"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userDto;
+		
+	}
+	public int modifyUserInfo(UserDTO dto) {
+		String SQL = "Update user where = ?";
+		
+		return -2;
 	}
 }

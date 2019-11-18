@@ -1,0 +1,11 @@
+.container {
+	max-width: 450px;
+}
+
+.lh-condensed {
+	line-height: 1.25;
+}
+
+input[name=userId] {
+	width: 80%
+}

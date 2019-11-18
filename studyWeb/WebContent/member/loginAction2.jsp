@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="user.*" %>
+<%@page import="java.io.PrintWriter" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	
@@ -11,24 +12,38 @@
 	
 	UserDAO userDao = new UserDAO(); // 데이터 입력/수정/삭제
 	int result  = userDao.login(id, pw);
-
+	
+	PrintWriter script = response.getWriter();
 	if (result == 1) {	
 		session.setAttribute("id", id);
 		session.setAttribute("pw", pw);
 		// 유효한 멤버임을 저장
 		session.setAttribute("ValidMem", "yes");
 		response.sendRedirect("main.jsp");
+		script.print(" location.href = './main.jsp' ");
+	}
+	else if (result == 0) {
+%>
+		<script type='text/javascript'>
+		alert("비밀번호가 틀립니다.");
+		history.back();
+		</script>
+<%
+	}
+	else if (result == -1) {
+%>
+		<script type='text/javascript'>
+		alert("존재하지 않는 아이디 입니다.");
+		history.back();
+		</script>
+<%
+	}
+	else if (result == -2) {
+%> 
+		<script type='text/javascript'>
+		alert("데이터베이스 오류가 발생했습니다.");
+		history.back();
+		</script>
+<%
 	}
 %>
-    
-    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
