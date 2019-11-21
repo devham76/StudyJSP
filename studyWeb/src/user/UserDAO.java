@@ -80,27 +80,42 @@ public class UserDAO {
 	
 	//-- 회원정보 가져오기
 	public UserDTO getUserInfo(String id) {
-		String SQL = "Select * form user where userId = ?";
-		UserDTO userDto = null;
+		String SQL = "Select * from user where userId = ?";
+		UserDTO userDto = new UserDTO();
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				System.out.println("userid ;"+rs.getString("userId"));
 				userDto.setUserId( rs.getString("userId"));
+				System.out.println("name ;"+rs.getString("name"));
+				
 				userDto.setUserName( rs.getString("name"));
 				userDto.setUserPw( rs.getString("userPw"));
 			}
 		} catch (Exception e) {
+			System.out.println("error 발생");
 			e.printStackTrace();
 		}
 		
 		return userDto;
 		
 	}
+	// 회원정보 수정
 	public int modifyUserInfo(UserDTO dto) {
-		String SQL = "Update user where = ?";
+		String SQL = "Update user set name = ?, userPw = ? where userId = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, dto.getUserName());
+			pstmt.setString(2, dto.getUserPw());
+			pstmt.setString(3, dto.getUserId());
+			
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		return -2;
+		return -1;	 // db 오류
 	}
 }

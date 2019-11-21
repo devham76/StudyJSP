@@ -31,11 +31,13 @@
 	PrintWriter script = response.getWriter();
 	script.print("<script type='text/javascript'>");
 	if (result == 1) {
+		
 		// 세션에 id, name, 로그인한 기록 저장
 		session.setAttribute("id", user.getUserId());
 		session.setAttribute("name", user.getUserName());
 		session.setAttribute("ValidMem", "yes");
 		//response.sendRedirect("main.jsp");
+		System.out.println("vaildmem ->"+session.getAttribute("VaildMem"));
 		script.print(" location.href = 'main.jsp' ");
 	}
 	else if (result == 0) {

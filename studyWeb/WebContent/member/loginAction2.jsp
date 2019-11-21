@@ -8,19 +8,23 @@
 	// 빈즈를 이용해서 처리해도 되고
 	// 아래 처럼 request에서 parameter값을 가져 와서 처리해도 된다.
 	String id = request.getParameter("userId");
-	String pw = request.getParameter("usetPw");
+	String pw = request.getParameter("userPw");
 	
 	UserDAO userDao = new UserDAO(); // 데이터 입력/수정/삭제
 	int result  = userDao.login(id, pw);
-	
 	PrintWriter script = response.getWriter();
 	if (result == 1) {	
+		UserDTO dto = userDao.getUserInfo(id);
+		String name = dto.getUserName();
 		session.setAttribute("id", id);
-		session.setAttribute("pw", pw);
+		session.setAttribute("name", name);
 		// 유효한 멤버임을 저장
-		session.setAttribute("ValidMem", "yes");
+		session.setAttribute("VaildMem", "yes");
+		System.out.println("vaildmem ->"+session.getAttribute("VaildMem"));
+		
 		response.sendRedirect("main.jsp");
-		script.print(" location.href = './main.jsp' ");
+		//script.print(" location.href = '/studyWeb/main.jsp' ");
+		//script.print(" location.href = 'main.jsp' ");
 	}
 	else if (result == 0) {
 %>

@@ -7,14 +7,20 @@
 	if (session.getAttribute("VaildMem") == null) {
 		System.out.println("vaildmem is null");
 %>
+<jsp:forward page="login2.jsp" />
+<!--  
 		<script type='text/javascript'>
-			location.href = "member/login2.jsp";
+			location.href = "login2.jsp";
 		</script>
+		-->
 <% 
 	}
 	else {
+		
+
+		String id = (String)session.getAttribute("id");
 		String name = (String)session.getAttribute("name");
-		String id 	= (String)session.getAttribute("id");
+		
 %>
 <jsp:include page="/head.jsp" flush="true" />
 <h1> <%= name %> 님 안녕하세요.</h1><br>

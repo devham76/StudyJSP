@@ -26,7 +26,7 @@ System.out
 %>
 	<script type="text/javascript">
 		alert("회원가입에 성공했습니다");
-		location.href = "./main.jsp";
+		location.href = "../main.jsp";
 	</script>
 <% 
 	}
@@ -42,3 +42,4 @@ System.out
 
 </body>
 </html>
+

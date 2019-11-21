@@ -1,3 +1,10 @@
+
+
+<% 
+	//--- 로그인 했다면, 메인 페이지로 바로 이동한다.
+	if(session.getAttribute("ValidMem") != null) { %>
+	<jsp:forward page="main.jsp"></jsp:forward>
+<% } else { %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="/head.jsp" flush="true" />
@@ -5,11 +12,6 @@
 <link href="../assets/css/sign.css" rel="stylesheet">
 </head>
 
-<% 
-	//--- 로그인 했다면, 메인 페이지로 바로 이동한다.
-	if(session.getAttribute("ValidMem") != null) { %>
-	<jsp:forward page="main.jsp"></jsp:forward>
-<% } %>
 <body class="text-center">
 	<form class="form-signin" method="post" action="loginAction2.jsp">
 		<img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg"
@@ -28,3 +30,6 @@
 	</form>
 </body>
 <jsp:include page="/footer.html" flush="true" />
+<% 
+}
+%>

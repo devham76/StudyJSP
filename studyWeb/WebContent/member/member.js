@@ -25,6 +25,7 @@ function modifyConfirm() {
 }
 //-- 회원가입 버튼 클릭시 
 function infoConfirm() {
+
 	// 아이디 확인
 	if (document.reg_frm.userId.value.length == 0) {
 		alert("아이디를 입력해주세요");
@@ -65,7 +66,7 @@ function infoConfirm() {
 //-- 아이디 중복확인
 function checkId(){
 	var id =  document.reg_frm.userId.value;
-	
+	console.log("checkid , id :"+id);
 	if (id.length == 0){
 		alert("아이디를 입력해주세요.");
 		reg_frm.userId.focus();

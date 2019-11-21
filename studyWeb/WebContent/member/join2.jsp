@@ -18,7 +18,7 @@
 							<input type="text" class="form-control" name="userId"
 								placeholder="아이디" required>
 							<div class="input-group-append">
-								<button type="checkId" class="btn btn-secondary" name="check_id"
+								<button class="btn btn-secondary" name="check_id"
 									onclick="checkId()">중복확인</button>
 								<input type="hidden" name="is_check_id" value="0">
 							</div>
