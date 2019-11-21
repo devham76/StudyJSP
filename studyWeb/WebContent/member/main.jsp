@@ -1,27 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
 <%
 	// 로그인 안되어 있으면 메인으로 이동
 	if (session.getAttribute("VaildMem") == null) {
 		System.out.println("vaildmem is null");
 %>
-<jsp:forward page="login2.jsp" />
-<!--  
-		<script type='text/javascript'>
-			location.href = "login2.jsp";
-		</script>
-		-->
+		<jsp:forward page="login2.jsp" />
+
 <% 
 	}
 	else {
-		
-
-		String id = (String)session.getAttribute("id");
+		String id	 = (String)session.getAttribute("id");
 		String name = (String)session.getAttribute("name");
 		
 %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <jsp:include page="/head.jsp" flush="true" />
 <h1> <%= name %> 님 안녕하세요.</h1><br>
 <form action = "logout.jsp" method="post">

@@ -7,7 +7,6 @@
 <% request.setCharacterEncoding("EUC-KR"); %>
 <%
 	String id = (String)session.getAttribute("id");
-id = "hyemi3";
 	UserDAO userDao = new UserDAO();
 	UserDTO userDto = userDao.getUserInfo(id);
 %>

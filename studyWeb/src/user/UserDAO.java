@@ -87,15 +87,11 @@ public class UserDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				System.out.println("userid ;"+rs.getString("userId"));
-				userDto.setUserId( rs.getString("userId"));
-				System.out.println("name ;"+rs.getString("name"));
-				
+				userDto.setUserId( rs.getString("userId"));			
 				userDto.setUserName( rs.getString("name"));
 				userDto.setUserPw( rs.getString("userPw"));
 			}
 		} catch (Exception e) {
-			System.out.println("error ¹ß»ý");
 			e.printStackTrace();
 		}
 		
