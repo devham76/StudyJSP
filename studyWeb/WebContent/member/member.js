@@ -5,7 +5,7 @@ function modifyConfirm() {
 		reg_frm.userPw.focus();
 		return;
 	}
-	if (document.modify_frm.userPw2.vale.length == 0) {
+	if (document.modify_frm.userPw2.value.length == 0) {
 		alert("비밀번호를 다시 입력해주세요");
 		reg_frm.userPw2.focus();
 		return;
