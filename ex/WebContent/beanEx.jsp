@@ -17,6 +17,11 @@
 이름 : <jsp:getProperty name="student" property="name" /><br>
 나이 : <jsp:getProperty name="student" property="age" /><br>
 학년 : <jsp:getProperty name="student" property="grade" /><br>
-번호 : <jsp:getProperty name="student" property="studentNum" />
+번호 : <jsp:getProperty name="student" property="studentNum" /><br>
+-----<br>
+이름 : ${student.name}<br>
+나이 : ${student.age}<br>
+학년 : ${student.grade}<br>
+번호 : ${student.studentNum}<br>
 </body>
 </html>
