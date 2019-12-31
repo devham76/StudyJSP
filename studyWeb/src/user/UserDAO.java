@@ -12,7 +12,7 @@ public class UserDAO {
 		System.out.println("userdao !!");
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/studyweb";
-			// 우리 컴에 설치된 mysql서버를 의미, bbs라는 데이터 베이스에 접속
+			// 우리 컴에 설치된 mysql서버를 의미, studyWeb라는 데이터 베이스에 접속
 			String dbID = "root";
 			String dbPassword = "devham7676";
 			//Class.forName("com.mysql.jdbc.Drvier");	// 주석처리하니까 실행됬음. 원인이 뭘까?
