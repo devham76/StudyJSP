@@ -12,9 +12,22 @@
 <link href="../assets/css/style.css" rel="stylesheet">
 
 <title>Insert title here</title>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page errorPage="errorPage.jsp"%>
 
 </head>
+<%
+	// 로그인이 되어있으면 세션정보를 가져온다
+	if (session.getAttribute("VaildMem") != null) {
+		System.out.println("[head] vaildmem is exist !!");
+		String id	 = (String)session.getAttribute("id");
+		String name = (String)session.getAttribute("name");
+	}
+	else{
+		System.out.println("[head] vaildmem is null");
+	}
+		
+%>
 

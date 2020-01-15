@@ -5,7 +5,6 @@
 <body class="bg-light">
 	<div class="container">
 		<div class="text-center pt-3">
-			<!--img class="d-block mx-auto mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="42"-->
 			<h2>회원가입</h2>
 			<p class="lead">안녕하세요 고객님 ! 회원가입 정보를 입력해주세요:)</p>
 		</div>

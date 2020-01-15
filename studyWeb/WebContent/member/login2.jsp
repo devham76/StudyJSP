@@ -14,12 +14,12 @@
 
 <body class="text-center">
 	<form class="form-signin" method="post" action="loginAction2.jsp">
-		<img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg"
-			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal"></h1>
-		<label for="inputEmail" class="sr-only">아이디</label> <input type="text"
+		<label for="inputEmail" class="sr-only">아이디</label> 
+		<input type="text"
 			name="userId" class="form-control" placeholder="아이디"
-			requiredautofocus value="<% if(session.getAttribute("id") != null) out.println(session.getAttribute("id")); %>">
+			requiredautofocus value="<% if(session.getAttribute("id") != null) out.println(session.getAttribute("id")); %>" >
+		
 		<label for="inputPassword" class="sr-only">비밀번호</label> <input
 			type="password" name="userPw" class="form-control" placeholder="비밀번호"
 			required>

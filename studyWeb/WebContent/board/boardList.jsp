@@ -20,31 +20,11 @@
 		</select> <input type="text" class="form-control" id="search-text" size=10>
 		<button type="button" class="btn btn-dark" id="search">검색</button>
 	</div>
-	<div class="row">
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">등록일시</th>
-					<th scope="col">조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>안녕하세요</td>
-					<td>이혜미</td>
-					<td>2019.10.29</td>
-					<td>10</td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="row" id="boardListDiv">
 	</div>
 	<div class="row">
-	<button type="button" class="btn btn-dark" id="new-post">글쓰기</button>
+	<button type="button" class="btn btn-dark" onclick="javascript:window.location='boardWriteForm.jsp'">글쓰기</button>
 	</div>
 </div>
-
+<jsp:include page="boardList.js" flush="true" />
 <jsp:include page="/footer.html" flush="true" />
